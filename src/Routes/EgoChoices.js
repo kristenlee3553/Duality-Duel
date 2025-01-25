@@ -1,7 +1,12 @@
 import SceneBackground from '../Images/SceneText.png'
 import "../Styles/EgoChoices.css";
+import "../Fonts/MedievalSharp-Regular.ttf"
+import { useState } from 'react';
 
 function EgoChoices() {
+
+    const [sceneNum, SetSceneNum] = useState(0)
+    
 return (
     <div>
         {/* Header Text*/}
@@ -12,9 +17,6 @@ return (
                     <h1>Text Over the image(Responsive image).</h1> 
                 </div> 
             </div>
-        </div>
-        <div class = "blue">
-            
         </div>
     </div>
   );
