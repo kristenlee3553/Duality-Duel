@@ -22,12 +22,14 @@ return (
         </div>
 
         {/* Choices Text*/}
+        <div class="center-choicediv">
         <table>
-                    <th><ChoiceBubble sceneNum={sceneNum} choiceNum={"choice1"}/></th>
+                    <th><div class="stagger"><ChoiceBubble sceneNum={sceneNum} choiceNum={"choice1"}/></div></th>
                     <th><ChoiceBubble sceneNum={sceneNum} choiceNum={"choice2"}/></th>
                     <th><ChoiceBubble sceneNum={sceneNum} choiceNum={"choice3"}/></th>
                     <th><ChoiceBubble sceneNum={sceneNum} choiceNum={"choice4"}/></th>
         </table>
+        </div>
     </div>
   );
 }
