@@ -1,4 +1,5 @@
 import "../Styles/Homepage.css";
+import { Link } from 'react-router-dom';
 
 function Homepage() {
     return (
@@ -6,7 +7,9 @@ function Homepage() {
             <div className="buttonsContainer">
                 <button className="button">Play</button>
                 <button className="button">Settings</button>
-                <button className="button">Credits</button>
+                <Link to="/credits">
+                    <button className="button">Credits</button>
+                </Link>
                 <button className="button">Exit</button>
             </div>
         </div>
