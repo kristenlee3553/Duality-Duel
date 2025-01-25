@@ -3,6 +3,7 @@
   src: local("MedievalSharp"),
     url("../Fonts/MedievalSharp-Regular.ttf") format("truetype");
 }
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400&display=swap');
 
 .scene-title-text {
   font: 36px "MedievalSharp";
@@ -26,4 +27,24 @@
   margin-left: auto;
   margin-right: auto;
 }
-  
+
+.buttonNext {
+  position: absolute;
+  bottom: 36px; 
+  right: 48px;
+  border-radius: 24px;
+  background-color: #e7daf9;
+  border: 2px solid #070939;
+  padding: 12px 36px;
+  font-family: 'EB Garamond', serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #070939;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.buttonNext:hover {
+  background-color: #d6c3f2;
+  transform: scale(1.05);
+}
