@@ -24,6 +24,9 @@ return (
         {/* Choices Text*/}
         <div>
             <ChoiceBubble sceneNum={sceneNum} choiceNum={"choice1"}/>
+            <ChoiceBubble sceneNum={sceneNum} choiceNum={"choice2"}/>
+            <ChoiceBubble sceneNum={sceneNum} choiceNum={"choice3"}/>
+            <ChoiceBubble sceneNum={sceneNum} choiceNum={"choice4"}/>
         </div>
     </div>
   );
