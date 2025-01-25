@@ -8,9 +8,9 @@ import Credits from './Routes/Credits';
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<EgoChoices />} />
-      <Route path='/Homepage' element={<Homepage />} />
-      <Route path='/Credits' element={<Credits />} />
+      <Route path='/' element={<Homepage />} />
+      <Route path='/credits' element={<Credits />} />
+      <Route path='/play' element={<EgoChoices />} />
     </Routes>
   );
 }
