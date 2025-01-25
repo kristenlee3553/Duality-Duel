@@ -3,10 +3,10 @@
     src: local("MedievalSharp"),
       url("../Fonts/MedievalSharp-Regular.ttf") format("truetype");
   }
-
-body {
+.scene-title-text {
     font-family: "MedievalSharp";
 }
+
 .image-overlay {
     position: relative;
     display: inline-block;

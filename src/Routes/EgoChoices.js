@@ -3,6 +3,7 @@ import "../Styles/EgoChoices.css";
 import "../Fonts/MedievalSharp-Regular.ttf"
 import { useState } from 'react';
 import { SceneData } from '../Data/SceneData';
+import ChoiceBubble from '../Components/ChoiceBubble';
 
 function EgoChoices() {
 
@@ -11,13 +12,18 @@ function EgoChoices() {
 return (
     <div>
         {/* Header Text*/}
-        <div class= "">
+        <div>
             <div class="image-overlay">
                 <img src={SceneBackground} class="img-fluid" alt='Scene Text Background'></img>
-                <div class="overlay-text"> 
-                    <h1>{SceneData[0].sceneTitle}</h1> 
+                <div class="overlay-text scene-title-text"> 
+                    <h1>{SceneData[sceneNum].sceneTitle}</h1> 
                 </div> 
             </div>
+        </div>
+
+        {/* Choices Text*/}
+        <div>
+            <ChoiceBubble />
         </div>
     </div>
   );
