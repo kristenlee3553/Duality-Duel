@@ -1,19 +1,20 @@
 import { useState } from "react"
-import SelectedChoice from "../Images/ChoiceCircleSelected.png"
-import UnSelectedChoice from "../Images/ChoiceCircleUnselected.png"
+import "../Fonts/EBGaramond-VariableFont_wght.ttf"
+import "../Styles/ChoiceBubble.css"
+import { SceneData } from "../Data/SceneData"
 
-function ChoiceBubble({ name }) {
+function ChoiceBubble({ sceneNum, choiceNum }) {
     
     const [selected, SetSelected] = useState(false)
-    const buttonImg = selected? SelectedChoice : UnSelectedChoice
+    const selectedState = selected? "selected" : "not-selected"
 
     const handleClick = () => {
         SetSelected(!selected)
     }
     return (
         <div>
-            <button className="btn" type='button' onClick={() => handleClick()}>
-                <img src={buttonImg} className="img-fluid" alt="Button"></img>
+            <button className={"btn image-button " + selectedState} type='button' onClick={() => handleClick()}>
+                <span className="button-text">{SceneData[sceneNum].choices[choiceNum]}</span>
             </button>
         </div>
     )

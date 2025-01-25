@@ -23,7 +23,7 @@ return (
 
         {/* Choices Text*/}
         <div>
-            <ChoiceBubble />
+            <ChoiceBubble sceneNum={sceneNum} choiceNum={"choice1"}/>
         </div>
     </div>
   );

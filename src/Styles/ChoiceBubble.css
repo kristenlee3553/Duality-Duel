@@ -1,7 +1,39 @@
-.selected-button {
-
+@font-face {
+    font-family: "EBGaramond";   /*Can be any text*/
+    src: local("EBGaramond"),
+      url("../Fonts/EBGaramond-VariableFont_wght.ttf") format("truetype");
 }
 
-.not-selected-button {
-    
-}
+.image-button {
+    position: relative;
+    display: inline-block;
+    width: 400px; /* Adjust as needed */
+    height: 400px; /* Adjust as needed */
+    background-size: cover;
+    background-position: center;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+  }
+
+  .selected {
+    background-image: url(../Images/ChoiceCircleSelected.png);
+  }
+
+  .not-selected {
+    background-image: url(../Images/ChoiceCircleUnselected.png);
+  }
+  
+  .button-text {
+    font-family: "EBGaramond";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none; /* Ensures the text does not interfere with button clicks */
+  }

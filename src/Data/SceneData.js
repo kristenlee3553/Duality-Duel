@@ -9,5 +9,15 @@ export const SceneData = [
       choice4 : "IDK just felt like it" 
     }
   },
+  {
+    sceneNum : 1,
+    sceneTitle : "blah blah",
+    choices : {
+      choice1 : "sdfds",
+      choice2 : "sdfdsf",
+      choice3 : "dsfdsf",
+      choice4 : "Idfsdf" 
+    }
+  },
 
 ];
