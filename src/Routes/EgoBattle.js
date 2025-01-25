@@ -1,27 +1,25 @@
 import SceneBackground from '../Images/SceneText.png'
-import "../Styles/EgoChoices.css";
+import "../Styles/EgoBattle.css";
 import "../Fonts/MedievalSharp-Regular.ttf"
+import "../Fonts/EBGaramond-VariableFont_wght.ttf"
 import { useState, useEffect } from 'react';
 import { SceneData } from '../Data/SceneData';
-import ChoiceBubble from '../Components/ChoiceBubble';
 import { handleGemeniAPICall } from '../AI/Gemeni';
-import ChoiceBubbleGroup from '../Components/ChoiceBubbleGroup';
-import NextButton from "../Images/NextButton.png"
 
-function EgoChoices() {
+function EgoBattle() {
 
     const [sceneNum, SetSceneNum] = useState(0);
-    //const [prompt, setPrompt] = useState("Say hi to me!");
-    //const [response, setResponse] = useState("");
+    const [prompt, setPrompt] = useState("Say hi to me!");
+    const [response, setResponse] = useState("");
     
-/*     useEffect(() => {
+    useEffect(() => {
         async function getAIResponse() {
             const AIResponse = await handleGemeniAPICall(prompt);
             setResponse(AIResponse);
         };
         
         getAIResponse()
-    }, [prompt]) */
+    }, [prompt])
     
     return (
         <div>
@@ -30,22 +28,25 @@ function EgoChoices() {
                 <div class="image-overlay">
                     <img src={SceneBackground} class="img-fluid" alt='Scene Text Background'></img>
                     <div class="overlay-text"> 
-                        <h1 class="scene-title-text">{SceneData[sceneNum].sceneTitle}</h1> 
+                        <h1 class="evil-title-text">{SceneData[sceneNum].sceneTitle}</h1> 
                     </div> 
                 </div>
             </div>
             <p>{response}</p>
             {/* Choices Text*/}
             <div class="center-choicediv">
-                <table>
-                    <th><div class="stagger"><ChoiceBubble sceneNum={sceneNum} choiceNum={"choice1"}/></div></th>
-                    <th><ChoiceBubble sceneNum={sceneNum} choiceNum={"choice2"}/></th>
-                    <th><ChoiceBubble sceneNum={sceneNum} choiceNum={"choice3"}/></th>
-                    <th><ChoiceBubble sceneNum={sceneNum} choiceNum={"choice4"}/></th>
-                </table>
+                <button className={"btn evil-image-button "} type='button'>
+                    <span className="button-text">I guess you're right...</span>
+                </button>
+                <button className={"btn evil-image-button "} type='button'>
+                    <span className="button-text">I guess you're right...</span>
+                </button>
+                <button className={"btn evil-image-button "} type='button'>
+                    <span className="button-text">I guess you're right...</span>
+                </button>
             </div>
         </div>
     );
 }
 
-export default EgoChoices;
+export default EgoBattle;
