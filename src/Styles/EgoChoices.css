@@ -52,7 +52,7 @@
   transition: all 0.3s ease;
 }
 
-.button:hover {
+.buttonNext:hover {
   background-color: #d6c3f2;
   transform: scale(1.05);
 }

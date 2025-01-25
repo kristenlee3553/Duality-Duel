@@ -6,7 +6,6 @@ import { SceneData } from '../Data/SceneData';
 import ChoiceBubble from '../Components/ChoiceBubble';
 import { handleGemeniAPICall } from '../AI/Gemeni';
 import ChoiceBubbleGroup from '../Components/ChoiceBubbleGroup';
-import NextButton from "../Images/NextButton.png"
 import { Link } from 'react-router-dom';
 
 function EgoChoices() {
@@ -45,7 +44,7 @@ function EgoChoices() {
         <Link to="/">
             <button className="buttonNext">Next</button>
         </Link>
-        </div>
+    </div>
     );
 }
 
