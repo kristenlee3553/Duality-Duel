@@ -9,17 +9,17 @@ import { handleGemeniAPICall } from '../AI/Gemeni';
 function EgoChoices() {
 
     const [sceneNum, SetSceneNum] = useState(0);
-    const [prompt, setPrompt] = useState("Say hi to me!");
-    const [response, setResponse] = useState("");
+    //const [prompt, setPrompt] = useState("Say hi to me!");
+    //const [response, setResponse] = useState("");
     
-    useEffect(() => {
+/*     useEffect(() => {
         async function getAIResponse() {
             const AIResponse = await handleGemeniAPICall(prompt);
             setResponse(AIResponse);
         };
         
         getAIResponse()
-    }, [prompt])
+    }, [prompt]) */
     
     return (
         <div>
@@ -34,12 +34,11 @@ function EgoChoices() {
             </div>
         {/* Choices Text*/}
         <div class="center-choicediv">
-          <p>{response}</p>
           <table>
-                      <th><div class="stagger"><ChoiceBubble sceneNum={sceneNum} choiceNum={"choice1"}/></div></th>
-                      <th><ChoiceBubble sceneNum={sceneNum} choiceNum={"choice2"}/></th>
-                      <th><ChoiceBubble sceneNum={sceneNum} choiceNum={"choice3"}/></th>
-                      <th><ChoiceBubble sceneNum={sceneNum} choiceNum={"choice4"}/></th>
+            <th><div class="stagger"><ChoiceBubble sceneNum={sceneNum} choiceNum={"choice1"}/></div></th>
+            <th><ChoiceBubble sceneNum={sceneNum} choiceNum={"choice2"}/></th>
+            <th><ChoiceBubble sceneNum={sceneNum} choiceNum={"choice3"}/></th>
+            <th><ChoiceBubble sceneNum={sceneNum} choiceNum={"choice4"}/></th>
           </table>
             </div>
         </div>
