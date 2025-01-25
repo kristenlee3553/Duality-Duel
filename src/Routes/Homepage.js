@@ -5,7 +5,9 @@ function Homepage() {
     return (
         <div className="homepage">
             <div className="buttonsContainer">
-                <button className="button">Play</button>
+                <Link to="/play">
+                    <button className="button">Play</button>
+                </Link>
                 <button className="button">Settings</button>
                 <Link to="/credits">
                     <button className="button">Credits</button>
