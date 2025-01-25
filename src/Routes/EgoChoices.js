@@ -6,14 +6,13 @@ import { SceneData } from '../Data/SceneData';
 import ChoiceBubble from '../Components/ChoiceBubble';
 import { handleGemeniAPICall } from '../AI/Gemeni';
 import ChoiceBubbleGroup from '../Components/ChoiceBubbleGroup';
+import NextButton from "../Images/NextButton.png"
 
 function EgoChoices() {
 
     const [sceneNum, SetSceneNum] = useState(0);
     //const [prompt, setPrompt] = useState("Say hi to me!");
     //const [response, setResponse] = useState("");
-    const [evil, setEvil] = useState(false);
-    const evilState = evil? "evil" : "not-evil";
     
 /*     useEffect(() => {
         async function getAIResponse() {
@@ -24,9 +23,6 @@ function EgoChoices() {
         getAIResponse()
     }, [prompt]) */
 
-    const handleEvilClick = () => {
-        setEvil(!evil)
-    }
     
     return (
         <div>
@@ -35,15 +31,21 @@ function EgoChoices() {
                 <div class="image-overlay">
                     <img src={SceneBackground} class="img-fluid" alt='Scene Text Background'></img>
                     <div class="overlay-text"> 
-                        <h1 class={"scene-title-text " + evilState}>{SceneData[sceneNum].sceneTitle}</h1> 
+                        <h1 class={"scene-title-text"}>{SceneData[sceneNum].sceneTitle}</h1> 
                     </div> 
                 </div>
             </div>
         {/* Choices Text*/}
         <div class="center-choicediv">
-          <ChoiceBubbleGroup sceneNum={sceneNum}></ChoiceBubbleGroup>
-            </div>
-            <button type='button' onClick={() => handleEvilClick()}>Change to evil</button>
+            <ChoiceBubbleGroup sceneNum={sceneNum}></ChoiceBubbleGroup>
+        </div>
+
+        {/* Next Button*/}
+        <div className='d-flex flex-row-reverse'>
+            <button className='btn'>
+                <img src={NextButton} className='img-fluid' alt='Next Button'></img>
+            </button>
+        </div>
         </div>
     );
 }
