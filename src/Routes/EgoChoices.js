@@ -34,7 +34,7 @@ function EgoChoices() {
                     </div> 
                 </div>
             </div>
-            <p>{response}</p>
+            {/* <p>{response}</p> */}
             {/* Choices Text*/}
             <div class="center-choicediv">
                 <table>
@@ -44,10 +44,10 @@ function EgoChoices() {
                     <th><ChoiceBubble sceneNum={sceneNum} choiceNum={"choice4"}/></th>
                 </table>
             </div>
+            <Link to="/">
+                <button className="buttonNext">Next</button>
+            </Link>
         </div>
-        <Link to="/">
-            <button className="buttonNext">Next</button>
-        </Link>
     );
 }
 
