@@ -5,12 +5,13 @@ import { SceneData } from "../Data/SceneData"
 
 function ChoiceBubble({ sceneNum, choiceNum }) {
     
-    const [selected, SetSelected] = useState(false)
-    const selectedState = selected? "selected" : "not-selected"
+    const [selected, setSelected] = useState(false);
+    const selectedState = selected? "selected" : "not-selected";
 
     const handleClick = () => {
-        SetSelected(!selected)
+        setSelected(!selected)
     }
+
     return (
         <div>
             <button className={"btn image-button " + selectedState} type='button' onClick={() => handleClick()}>
