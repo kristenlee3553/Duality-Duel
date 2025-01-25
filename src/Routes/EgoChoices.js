@@ -5,21 +5,23 @@ import { useState, useEffect } from 'react';
 import { SceneData } from '../Data/SceneData';
 import ChoiceBubble from '../Components/ChoiceBubble';
 import { handleGemeniAPICall } from '../AI/Gemeni';
+import ChoiceBubbleGroup from '../Components/ChoiceBubbleGroup';
+import NextButton from "../Images/NextButton.png"
 
 function EgoChoices() {
 
     const [sceneNum, SetSceneNum] = useState(0);
-    const [prompt, setPrompt] = useState("Say hi to me!");
-    const [response, setResponse] = useState("");
+    //const [prompt, setPrompt] = useState("Say hi to me!");
+    //const [response, setResponse] = useState("");
     
-    useEffect(() => {
+/*     useEffect(() => {
         async function getAIResponse() {
             const AIResponse = await handleGemeniAPICall(prompt);
             setResponse(AIResponse);
         };
         
         getAIResponse()
-    }, [prompt])
+    }, [prompt]) */
     
     return (
         <div>
