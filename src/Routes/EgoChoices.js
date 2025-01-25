@@ -32,14 +32,15 @@ function EgoChoices() {
                     </div> 
                 </div>
             </div>
-
-            {/* Choices Text*/}
-            <div>
-                <p>{response}</p>
-                <ChoiceBubble sceneNum={sceneNum} choiceNum={"choice1"}/>
-                <ChoiceBubble sceneNum={sceneNum} choiceNum={"choice2"}/>
-                <ChoiceBubble sceneNum={sceneNum} choiceNum={"choice3"}/>
-                <ChoiceBubble sceneNum={sceneNum} choiceNum={"choice4"}/>
+        {/* Choices Text*/}
+        <div class="center-choicediv">
+          <p>{response}</p>
+          <table>
+                      <th><div class="stagger"><ChoiceBubble sceneNum={sceneNum} choiceNum={"choice1"}/></div></th>
+                      <th><ChoiceBubble sceneNum={sceneNum} choiceNum={"choice2"}/></th>
+                      <th><ChoiceBubble sceneNum={sceneNum} choiceNum={"choice3"}/></th>
+                      <th><ChoiceBubble sceneNum={sceneNum} choiceNum={"choice4"}/></th>
+          </table>
             </div>
         </div>
     );
