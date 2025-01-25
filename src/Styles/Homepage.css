@@ -13,6 +13,22 @@
     font-family: 'EB Garamond', serif;
 }
 
+.bottomLeftImage {
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    width: 200px;
+    height: auto;
+}
+
+.topRightImage {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    width: 200px;
+    height: auto;
+}
+
 .buttonsContainer {
     display: flex;
     flex-direction: column;
