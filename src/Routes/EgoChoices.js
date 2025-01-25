@@ -11,8 +11,6 @@ function EgoChoices() {
     const [sceneNum, SetSceneNum] = useState(0);
     //const [prompt, setPrompt] = useState("Say hi to me!");
     //const [response, setResponse] = useState("");
-    const [prompt, setPrompt] = useState("Say hi to me!");
-    const [response, setResponse] = useState("");
     const [evil, setEvil] = useState(false);
     const evilState = evil? "evil" : "not-evil";
     
