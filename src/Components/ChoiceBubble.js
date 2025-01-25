@@ -7,8 +7,7 @@ function ChoiceBubble({ sceneNum, choiceNum, isSelected, onSelect }) {
     
     const selectedStateStyle = isSelected ? 'selected' : 'not-selected';
 
-    const temp = choiceNum + 1
-    const choiceKey = "choice" + temp
+    const choiceKey = "choice" + choiceNum
 
     const handleClick = () => {
         onSelect(choiceNum); // Notify parent about the selected choice

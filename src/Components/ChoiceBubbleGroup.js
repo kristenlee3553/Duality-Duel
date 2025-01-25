@@ -2,12 +2,13 @@ import { useState } from "react"
 import { SceneData } from "../Data/SceneData";
 import ChoiceBubble from "./ChoiceBubble";
 
-function ChoiceBubbleGroup({ sceneNum }) {
+function ChoiceBubbleGroup({ sceneNum, onChoiceSelected }) {
     
     const [selectedChoice, setSelectedChoice] = useState(null);
 
     const handleChoiceSelect = (choiceNum) => {
       setSelectedChoice(choiceNum); // Set the selected choice number
+      onChoiceSelected(choiceNum); // Call parent function
     };
 
     const choices = Object.values(SceneData[sceneNum].choices);
