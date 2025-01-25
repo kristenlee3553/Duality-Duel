@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+
+.creditsPage {
+    font-family: 'EB Garamond', serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+h1 {
+    font-family: 'MedievalSharp', regular;
+    font-size: 64px;
+    margin-bottom: 20px;
+    color: #070939;
+    position: absolute;
+    top: 36px; 
+    left: center;
+}
+
+.backButton {
+    position: absolute;
+    top: 36px; 
+    left: 20px;
+    border-radius: 24px;
+    background-color: #e7daf9;
+    border: 2px solid #070939;
+    padding: 12px 36px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #070939;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.backButton:hover {
+    background-color: #d6c3f2;
+    transform: scale(1.05);
+}
+
+.nameContainer {
+    width: 268px;
+    position: relative;
+    font-size: 24px;
+    font-family: 'EB Garamond';
+    background: linear-gradient(90deg, #e7daf9, #070939);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    display: inline-block;
+}
+
+.roleContainer {
+    width: 268px;
+    position: relative;
+    font-size: 16px;
+    font-family: 'EB Garamond';
+    color: #070939;
+    text-align: center;
+    display: inline-block;
+}
+
+.container-person {
+    align-items: flex-start;
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: 84px;
+    position: relative;
+}
+
+.person {
+    align-items: center;
+    display: inline-flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 28px;
+    position: relative;
+}
+  
+.photo {
+    background-color: #f3f3f3;
+    border-radius: 125.5px;
+    height: 251px;
+    position: relative;
+    width: 251px;
+}
+  
+.photo-text {
+    align-items: center;
+    display: inline-flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+}
