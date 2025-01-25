@@ -5,15 +5,7 @@
 }
 
 .scene-title-text {
-  font: 48px "MedievalSharp";
-}
-
-.evil {
-  color: #be383a;
-}
-
-.not-evil {
-  color: #070939;
+  font: 36px "MedievalSharp";
 }
 
 .image-overlay {

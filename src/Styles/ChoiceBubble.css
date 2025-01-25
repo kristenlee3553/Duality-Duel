@@ -13,7 +13,7 @@
     background-position: center;
     border: none;
     cursor: pointer;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: bold;
     text-align: center;
     vertical-align: middle;
@@ -36,6 +36,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none; /* Ensures the text does not interfere with button clicks */
+    width: 75%;
   }
 
   .stagger {
