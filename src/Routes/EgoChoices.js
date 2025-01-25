@@ -7,6 +7,7 @@ import { handleGemeniAPICall } from '../AI/Gemeni';
 import ChoiceBubbleGroup from '../Components/ChoiceBubbleGroup';
 import NextButton from "../Images/NextButton.png"
 import { GetPersonaPrompt, GetShadowPrompt } from '../Data/GeminiPrompts';
+import { Link } from 'react-router-dom';
 
 function EgoChoices() {
 
@@ -61,7 +62,7 @@ function EgoChoices() {
                 <div class="image-overlay">
                     <img src={SceneBackground} class="img-fluid" alt='Scene Text Background'></img>
                     <div class="overlay-text"> 
-                        <h1 class={"scene-title-text"}>{SceneData[sceneNum].sceneTitle}</h1> 
+                        <h1 class="scene-title-text">{SceneData[sceneNum].sceneTitle}</h1> 
                     </div> 
                 </div>
             </div>
@@ -69,13 +70,9 @@ function EgoChoices() {
         <div class="center-choicediv">
             <ChoiceBubbleGroup sceneNum={sceneNum} onChoiceSelected={handleChoiceSelected}></ChoiceBubbleGroup>
         </div>
-
-        {/* Next Button*/}
-        <div className='d-flex flex-row-reverse'>
-            <button className='btn' onClick={() => handleClick()}> 
-                <img src={NextButton} className='img-fluid' alt='Next Button'></img>
-            </button>
-        </div>
+            <Link to="/">
+                <button className="buttonNext">Next</button>
+            </Link>
         </div>
     );
 }

@@ -43,7 +43,7 @@ function Credits() {
         </div>
 
         {/* Back button */}
-        <Link to="/Homepage">
+        <Link to="/">
                 <button className="backButton">Back to Homepage</button>
         </Link>
     </div>

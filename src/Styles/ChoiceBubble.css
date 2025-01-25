@@ -36,6 +36,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none; /* Ensures the text does not interfere with button clicks */
+    width: 75%;
   }
 
   .stagger {
