@@ -2,6 +2,7 @@ import SceneBackground from '../Images/SceneText.png'
 import "../Styles/EgoChoices.css";
 import "../Fonts/MedievalSharp-Regular.ttf"
 import { useState } from 'react';
+import { SceneData } from '../Data/SceneData';
 
 function EgoChoices() {
 
@@ -14,7 +15,7 @@ return (
             <div class="image-overlay">
                 <img src={SceneBackground} class="img-fluid" alt='Scene Text Background'></img>
                 <div class="overlay-text"> 
-                    <h1>Text Over the image(Responsive image).</h1> 
+                    <h1>{SceneData[0].sceneTitle}</h1> 
                 </div> 
             </div>
         </div>
