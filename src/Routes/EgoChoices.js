@@ -7,6 +7,7 @@ import ChoiceBubble from '../Components/ChoiceBubble';
 import { handleGemeniAPICall } from '../AI/Gemeni';
 import ChoiceBubbleGroup from '../Components/ChoiceBubbleGroup';
 import NextButton from "../Images/NextButton.png"
+import { Link } from 'react-router-dom';
 
 function EgoChoices() {
 
@@ -41,11 +42,9 @@ function EgoChoices() {
         </div>
 
         {/* Next Button*/}
-        <div className='d-flex flex-row-reverse'>
-            <button className='btn'>
-                <img src={NextButton} className='img-fluid' alt='Next Button'></img>
-            </button>
-        </div>
+        <Link to="/">
+            <button className="buttonNext">Next</button>
+        </Link>
         </div>
     );
 }
