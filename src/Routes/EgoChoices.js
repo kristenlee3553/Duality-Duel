@@ -22,7 +22,6 @@ function EgoChoices() {
         
         getAIResponse()
     }, [prompt]) */
-
     
     return (
         <div>
@@ -31,20 +30,24 @@ function EgoChoices() {
                 <div class="image-overlay">
                     <img src={SceneBackground} class="img-fluid" alt='Scene Text Background'></img>
                     <div class="overlay-text"> 
-                        <h1 class={"scene-title-text"}>{SceneData[sceneNum].sceneTitle}</h1> 
+                        <h1 class="scene-title-text">{SceneData[sceneNum].sceneTitle}</h1> 
                     </div> 
                 </div>
             </div>
-        {/* Choices Text*/}
-        <div class="center-choicediv">
-            <ChoiceBubbleGroup sceneNum={sceneNum}></ChoiceBubbleGroup>
+            <p>{response}</p>
+            {/* Choices Text*/}
+            <div class="center-choicediv">
+                <table>
+                    <th><div class="stagger"><ChoiceBubble sceneNum={sceneNum} choiceNum={"choice1"}/></div></th>
+                    <th><ChoiceBubble sceneNum={sceneNum} choiceNum={"choice2"}/></th>
+                    <th><ChoiceBubble sceneNum={sceneNum} choiceNum={"choice3"}/></th>
+                    <th><ChoiceBubble sceneNum={sceneNum} choiceNum={"choice4"}/></th>
+                </table>
+            </div>
         </div>
-
-        {/* Next Button*/}
         <Link to="/">
             <button className="buttonNext">Next</button>
         </Link>
-    </div>
     );
 }
 
