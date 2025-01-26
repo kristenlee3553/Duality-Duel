@@ -22,6 +22,11 @@
     margin: 25px;
   }
 
+  .image-button:hover {
+    background-image: url(../Images/ChoiceCircleSelected.png);
+    
+  }
+
   .selected {
     background-image: url(../Images/ChoiceCircleSelected.png);
   }

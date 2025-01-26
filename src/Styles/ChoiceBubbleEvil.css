@@ -22,6 +22,10 @@
     margin: 25px;
   }
 
+  .evil-image-button:hover {
+    background-image: url(../Images/EvilCircleSelected.png);
+  }
+
   .evil-selected {
     background-image: url(../Images/EvilCircleSelected.png);
   }
