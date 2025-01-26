@@ -5,6 +5,11 @@
 }
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400&display=swap');
 
+body {
+    background-image: url("/public/Images/peacefulBackground.png");
+    background-size: cover;
+}
+
 .scene-title-text {
   font: 30px "MedievalSharp";
   color: #070939;
