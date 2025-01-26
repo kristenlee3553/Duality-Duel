@@ -17,6 +17,11 @@ function EgoChoices() {
     const [shadowText, setShadowText] = useState([])
     const [evilCounter, setEvilCounter] = useState(0);
 
+    const evilChoices = 
+    [["That's not true!", "I'm not sure...", "You're right."],
+    ["Stop Talking!", "Maybe you're right...", "I know."],
+    ["You're Wrong!", "I don't know about that...", "I accept that part of me."]]
+
     function GetChoicesText() {
         const choiceArray = []
 
@@ -56,7 +61,7 @@ function EgoChoices() {
         }
         else if (sceneType == "dream") {
             setSceneNum(0);
-            setChoices(["That's not true!", "I'm not sure...", "You're right."]);
+            setChoices(evilChoices[0]);
             setSceneType("battle");
         }
         else if (sceneType == "battle") {
@@ -75,6 +80,7 @@ function EgoChoices() {
             }
             // Next Scene
             else {
+                setChoices(evilChoices[sceneNum + 1])
                 setSceneNum(sceneNum + 1);
             }
         }
