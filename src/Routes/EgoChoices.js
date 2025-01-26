@@ -6,19 +6,24 @@ import "../Fonts/MedievalSharp-Regular.ttf";
 import { useState } from 'react';
 import { SceneData } from '../Data/SceneData';
 import { handleGemeniAPICall } from '../AI/Gemeni';
-import ChoiceBubbleGroup from '../Components/ChoiceBubbleGroup';
-import ChoiceBubbleGroupEvil from '../Components/ChoiceBubbleGroupEvil';
+import ChoiceBubble from '../Components/ChoiceBubble';
+import ChoiceBubbleEvil from '../Components/ChoiceBubbleEvil';
 import { GetPersonaPrompt, GetShadowPrompt } from '../Data/GeminiPrompts';
 import EndPage from './EndPage';
 
 function EgoChoices() {
     const [sceneNum, setSceneNum] = useState(0);
-    const [selectedChoice, setSelectedChoice] = useState(0);
+    const [selectedChoice, setSelectedChoice] = useState(10);
     const [sceneType, setSceneType] = useState(["choices"]);
     const [choices, setChoices] = useState([]);
     const [shadowText, setShadowText] = useState([])
     const [evilCounter, setEvilCounter] = useState(0);
     const [cutsceneText, setCutsceneText] = useState("");
+
+    const evilChoices = 
+    [["That's not true!", "I'm not sure...", "You're right."],
+    ["Stop Talking!", "Maybe you're right...", "I know."],
+    ["You're wrong!", "I don't know about that...", "I accept that part of me."]]
 
     function GetChoicesText() {
         const choiceArray = []
@@ -55,15 +60,14 @@ function EgoChoices() {
         setCutsceneText('I know who you are. But do you know who you are?');
         await sleep(2000);
         setSceneNum(0);
-        setChoices(["That's not true!", "I'm not sure...", "You're right."]);
+        setChoices(evilChoices[0]);
         setSceneType("battle");
     }
 
     const handleClick = () => {
         if (sceneType == "choices") {
             setChoices((choices) => [...choices, selectedChoice]);
-            setSelectedChoice(5)
-
+            setSelectedChoice(10)
             // Last scene and user clicks next
             if (sceneNum == 4) {
                 getAIResponse();
@@ -83,12 +87,15 @@ function EgoChoices() {
                 setEvilCounter(evilCounter + 2);
             }
 
+            setSelectedChoice(10)
+
             // Last scene and user clicks next
             if (sceneNum === 2) {
                 setSceneType("end");
             }
             // Next Scene
             else {
+                setChoices(evilChoices[sceneNum + 1])
                 setSceneNum(sceneNum + 1);
             }
         }
@@ -112,8 +119,31 @@ function EgoChoices() {
                     </div>
                 </div>
                 {/* Choices Text*/}
-                <div class="center-choicediv">
-                    <ChoiceBubbleGroup sceneNum={sceneNum} onChoiceSelected={handleChoiceSelected}></ChoiceBubbleGroup>
+                <div className="d-flex flex-row mb-3 center-choicediv">
+                    <ChoiceBubble
+                        sceneNum={sceneNum}
+                        choiceNum= {0}
+                        isSelected={selectedChoice === 0} // Pass the selected state
+                        onSelect={handleChoiceSelected} // Pass the function to update selected state
+                    />
+                    <ChoiceBubble
+                        sceneNum={sceneNum}
+                        choiceNum= {1}
+                        isSelected={selectedChoice === 1} // Pass the selected state
+                        onSelect={handleChoiceSelected} // Pass the function to update selected state
+                    />
+                    <ChoiceBubble
+                        sceneNum={sceneNum}
+                        choiceNum= {2}
+                        isSelected={selectedChoice === 2} // Pass the selected state
+                        onSelect={handleChoiceSelected} // Pass the function to update selected state
+                    />
+                    <ChoiceBubble
+                        sceneNum={sceneNum}
+                        choiceNum= {3}
+                        isSelected={selectedChoice === 3} // Pass the selected state
+                        onSelect={handleChoiceSelected} // Pass the function to update selected state
+                    />
                 </div>
             </div>
         );
@@ -147,8 +177,25 @@ function EgoChoices() {
                     </div>
                 </div>
                 {/* Choices Text*/}
-                <div class="center-choicediv">
-                    <ChoiceBubbleGroupEvil choices={choices} onChoiceSelected={handleChoiceSelected}></ChoiceBubbleGroupEvil>
+                <div className="d-flex flex-row mb-3 center-choicediv">
+                    <ChoiceBubbleEvil
+                        choice={choices[0]}
+                        choiceNum= {0}
+                        isSelected={selectedChoice === 0} // Pass the selected state
+                        onSelect={handleChoiceSelected} // Pass the function to update selected state
+                    />
+                    <ChoiceBubbleEvil
+                        choice={choices[1]}
+                        choiceNum= {1}
+                        isSelected={selectedChoice === 1} // Pass the selected state
+                        onSelect={handleChoiceSelected} // Pass the function to update selected state
+                    />
+                    <ChoiceBubbleEvil
+                        choice={choices[2]}
+                        choiceNum= {2}
+                        isSelected={selectedChoice === 2} // Pass the selected state
+                        onSelect={handleChoiceSelected} // Pass the function to update selected state
+                    />
                 </div>
             </div>
         );
