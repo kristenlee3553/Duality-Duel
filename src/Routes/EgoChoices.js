@@ -6,7 +6,7 @@ import "../Styles/EgoChoices.css";
 import "../Fonts/MedievalSharp-Regular.ttf";
 import { useState } from 'react';
 import { SceneData } from '../Data/SceneData';
-import { handleGemeniAPICall } from '../AI/Gemeni';
+import { handleGeminiAPICall } from '../AI/Gemini';
 import ChoiceBubble from '../Components/ChoiceBubble';
 import ChoiceBubbleEvil from '../Components/ChoiceBubbleEvil';
 import { GetPersonaPrompt, GetShadowPrompt } from '../Data/GeminiPrompts';
@@ -39,8 +39,8 @@ function EgoChoices() {
     }
 
     async function getAIResponse() {
-        const AIResponse = await handleGemeniAPICall(GetPersonaPrompt(GetChoicesText()));
-        const AIShadowResponse = await handleGemeniAPICall(GetShadowPrompt());
+        const AIResponse = await handleGeminiAPICall(GetPersonaPrompt(GetChoicesText()));
+        const AIShadowResponse = await handleGeminiAPICall(GetShadowPrompt());
 
         let trimmed = AIShadowResponse.split('[').pop().split(']').shift();
         let shadowTextArray = trimmed.match(/"([^"]+)"/g).map(item => item.replace(/"/g, ''));
