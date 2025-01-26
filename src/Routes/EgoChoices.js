@@ -43,9 +43,10 @@ function EgoChoices() {
     const handleClick = () => {
         if (sceneType == "choices") {
             setChoices((choices) => [...choices, selectedChoice]);
+            setSelectedChoice(5)
 
             // Last scene and user clicks next
-            if (sceneNum === 4) {
+            if (sceneNum == 4) {
                 getAIResponse()
                 setSceneType("dream");
             }
@@ -80,6 +81,7 @@ function EgoChoices() {
 
     const handleChoiceSelected = (choiceNum) => {
         setSelectedChoice(choiceNum); // Update the selected choice state
+        handleClick()
     };
     
     if (sceneType == "choices") {
@@ -97,10 +99,6 @@ function EgoChoices() {
                 {/* Choices Text*/}
                 <div class="center-choicediv">
                     <ChoiceBubbleGroup sceneNum={sceneNum} onChoiceSelected={handleChoiceSelected}></ChoiceBubbleGroup>
-                </div>
-                {/* Next Button*/}
-                <div className='d-flex flex-row-reverse'>
-                    <button className='buttonNext' onClick={() => handleClick()}>Next</button>
                 </div>
             </div>
         );
@@ -131,10 +129,6 @@ function EgoChoices() {
                 {/* Choices Text*/}
                 <div class="center-choicediv">
                     <ChoiceBubbleGroupEvil choices={choices} onChoiceSelected={handleChoiceSelected}></ChoiceBubbleGroupEvil>
-                </div>
-                {/* Next Button*/}
-                <div className='d-flex flex-row-reverse'>
-                    <button className='buttonNext' onClick={() => handleClick()}>Next</button>
                 </div>
             </div>
         );
