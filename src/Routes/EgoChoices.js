@@ -39,7 +39,7 @@ function EgoChoices() {
     }
 
     const handleClick = () => {
-        if (sceneType == "choices") {
+        if (sceneType === "choices") {
             setChoices((choices) => [...choices, selectedChoice]);
 
             // Last scene and user clicks next
@@ -52,12 +52,12 @@ function EgoChoices() {
                 setSceneNum(sceneNum + 1);
             }
         }
-        else if (sceneType == "dream") {
+        else if (sceneType === "dream") {
             setSceneNum(0);
             setChoices(["That's not true!", "I'm not sure...", "You're right."]);
             setSceneType("battle");
         }
-        else if (sceneType == "battle") {
+        else if (sceneType === "battle") {
             // Last scene and user clicks next
             if (sceneNum === 2) {
                 setSceneType("choices");
@@ -71,9 +71,10 @@ function EgoChoices() {
 
     const handleChoiceSelected = (choiceNum) => {
         setSelectedChoice(choiceNum); // Update the selected choice state
+        handleClick()
     };
     
-    if (sceneType == "choices") {
+    if (sceneType === "choices") {
         return (
             <div>
                 {/* Header Text*/}
@@ -96,7 +97,7 @@ function EgoChoices() {
             </div>
         );
     }
-    else if (sceneType == "dream") {
+    else if (sceneType === "dream") {
         return (
             <div>
                 cutscene here
@@ -107,7 +108,7 @@ function EgoChoices() {
             </div>
         );
     }
-    else if (sceneType == "battle") {
+    else if (sceneType === "battle") {
         return (
             <div>
                 {/* Header Text*/}
@@ -122,10 +123,6 @@ function EgoChoices() {
                 {/* Choices Text*/}
                 <div class="center-choicediv">
                     <ChoiceBubbleGroupEvil choices={choices} onChoiceSelected={handleChoiceSelected}></ChoiceBubbleGroupEvil>
-                </div>
-                {/* Next Button*/}
-                <div className='d-flex flex-row-reverse'>
-                    <button className='buttonNext' onClick={() => handleClick()}>Next</button>
                 </div>
             </div>
         );
