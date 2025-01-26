@@ -7,6 +7,7 @@ import { handleGemeniAPICall } from '../AI/Gemeni';
 import ChoiceBubble from '../Components/ChoiceBubble';
 import ChoiceBubbleEvil from '../Components/ChoiceBubbleEvil';
 import { GetPersonaPrompt, GetShadowPrompt } from '../Data/GeminiPrompts';
+import EndPage from './EndPage';
 
 function EgoChoices() {
     const [sceneNum, setSceneNum] = useState(0);
@@ -14,6 +15,7 @@ function EgoChoices() {
     const [sceneType, setSceneType] = useState(["choices"]);
     const [choices, setChoices] = useState([]);
     const [shadowText, setShadowText] = useState([])
+    const [evilCounter, setEvilCounter] = useState(0);
 
     function GetChoicesText() {
         const choiceArray = []
@@ -58,9 +60,16 @@ function EgoChoices() {
             setSceneType("battle");
         }
         else if (sceneType == "battle") {
+            if (selectedChoice === 1) {
+                setEvilCounter(evilCounter + 1);
+            }
+            else if (selectedChoice === 2) {
+                setEvilCounter(evilCounter + 2);
+            }
+
             // Last scene and user clicks next
-            if (sceneNum == 2) {
-                setSceneType("choices");
+            if (sceneNum === 2) {
+                setSceneType("end");
             }
             // Next Scene
             else {
@@ -160,6 +169,15 @@ function EgoChoices() {
                         onSelect={handleChoiceSelected} // Pass the function to update selected state
                     />
                 </div>
+            </div>
+        );
+    }
+    else if (sceneType == "end") {
+        return (
+            <div>
+                <EndPage
+                    state={evilCounter}
+                />
             </div>
         );
     }
