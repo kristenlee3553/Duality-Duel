@@ -1,6 +1,8 @@
-import SceneBackground from '../Images/SceneText.png'
+import SceneBackground from '../Images/SceneText.png';
+import HoodedFigure from '../Images/hooded.png';
+import EvilFigure from '../Images/evil.png'
 import "../Styles/EgoChoices.css";
-import "../Fonts/MedievalSharp-Regular.ttf"
+import "../Fonts/MedievalSharp-Regular.ttf";
 import { useState } from 'react';
 import { SceneData } from '../Data/SceneData';
 import { handleGemeniAPICall } from '../AI/Gemeni';
@@ -16,6 +18,7 @@ function EgoChoices() {
     const [choices, setChoices] = useState([]);
     const [shadowText, setShadowText] = useState([])
     const [evilCounter, setEvilCounter] = useState(0);
+    const [cutsceneText, setCutsceneText] = useState("");
 
     function GetChoicesText() {
         const choiceArray = []
@@ -30,14 +33,30 @@ function EgoChoices() {
     }
 
     async function getAIResponse() {
-        setShadowText(["I know who you are..."])
-
         const AIResponse = await handleGemeniAPICall(GetPersonaPrompt(GetChoicesText()));
         const AIShadowResponse = await handleGemeniAPICall(GetShadowPrompt());
 
         let trimmed = AIShadowResponse.split('[').pop().split(']').shift();
         let shadowTextArray = trimmed.match(/"([^"]+)"/g).map(item => item.replace(/"/g, ''));
         setShadowText(shadowTextArray);
+    }
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function cutscene() {
+        setCutsceneText('Oh, you thought you were just going on a journey, did you?');
+        await sleep(2000);
+        setCutsceneText('You can\'t run anymore.');
+        await sleep(2000);
+        setCutsceneText('You can\'t run from yourself.');
+        await sleep(2000);
+        setCutsceneText('I know who you are. But do you know who you are?');
+        await sleep(2000);
+        setSceneNum(0);
+        setChoices(["That's not true!", "I'm not sure...", "You're right."]);
+        setSceneType("battle");
     }
 
     const handleClick = () => {
@@ -47,18 +66,14 @@ function EgoChoices() {
 
             // Last scene and user clicks next
             if (sceneNum == 4) {
-                getAIResponse()
+                getAIResponse();
                 setSceneType("dream");
+                cutscene();
             }
             // Next Scene
             else {
                 setSceneNum(sceneNum + 1);
             }
-        }
-        else if (sceneType == "dream") {
-            setSceneNum(0);
-            setChoices(["That's not true!", "I'm not sure...", "You're right."]);
-            setSceneType("battle");
         }
         else if (sceneType == "battle") {
             if (selectedChoice === 1) {
@@ -106,10 +121,14 @@ function EgoChoices() {
     else if (sceneType == "dream") {
         return (
             <div>
-                cutscene here
-                {/* Next Button*/}
-                <div className='d-flex flex-row-reverse'>
-                    <button className='buttonNext' onClick={() => handleClick()}>Next</button>
+                <div>
+                    <div class="image-overlay">
+                        <img src={SceneBackground} class="img-fluid" alt='Scene Text Background'></img>
+                        <img src={HoodedFigure} class="img-figure" alt='Scene Text Background'></img>
+                        <div class="overlay-text"> 
+                            <h1 class="dream-title-text">{cutsceneText}</h1> 
+                        </div> 
+                    </div>
                 </div>
             </div>
         );
@@ -121,6 +140,7 @@ function EgoChoices() {
                 <div>
                     <div class="image-overlay">
                         <img src={SceneBackground} class="img-fluid" alt='Scene Text Background'></img>
+                        <img src={EvilFigure} class="img-evil" alt='Scene Text Background'></img>
                         <div class="overlay-text"> 
                             <h1 class="evil-title-text">{shadowText[sceneNum]}</h1>
                         </div> 
