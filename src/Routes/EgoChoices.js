@@ -20,7 +20,7 @@ function EgoChoices() {
     const evilChoices = 
     [["That's not true!", "I'm not sure...", "You're right."],
     ["Stop Talking!", "Maybe you're right...", "I know."],
-    ["You're Wrong!", "I don't know about that...", "I accept that part of me."]]
+    ["You're wrong!", "I don't know about that...", "I accept that part of me."]]
 
     function GetChoicesText() {
         const choiceArray = []
