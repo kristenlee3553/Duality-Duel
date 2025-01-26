@@ -1,8 +1,7 @@
 import { useState } from "react"
-import { SceneData } from "../Data/SceneData";
-import ChoiceBubble from "./ChoiceBubble";
+import ChoiceBubbleEvil from "./ChoiceBubbleEvil";
 
-function ChoiceBubbleGroup({ sceneNum, onChoiceSelected }) {
+function ChoiceBubbleGroupEvil({ choices, onChoiceSelected }) {
     
     const [selectedChoice, setSelectedChoice] = useState(null);
 
@@ -10,15 +9,12 @@ function ChoiceBubbleGroup({ sceneNum, onChoiceSelected }) {
       setSelectedChoice(choiceNum); // Set the selected choice number
       onChoiceSelected(choiceNum); // Call parent function
     };
-
-    const choices = Object.values(SceneData[sceneNum].choices);
   
     return (
         <div className="d-flex flex-row mb-3">
             {choices.map((choice, index) => (
-                <ChoiceBubble
-                    key={index}
-                    sceneNum={sceneNum}
+                <ChoiceBubbleEvil
+                    choice={choice}
                     choiceNum={index}
                     isSelected={selectedChoice === index} // Pass the selected state
                     onSelect={handleChoiceSelect} // Pass the function to update selected state
@@ -28,4 +24,4 @@ function ChoiceBubbleGroup({ sceneNum, onChoiceSelected }) {
     );
 }
 
-export default ChoiceBubbleGroup
+export default ChoiceBubbleGroupEvil;

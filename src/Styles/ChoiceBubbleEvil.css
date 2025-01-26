@@ -4,8 +4,8 @@
       url("../Fonts/EBGaramond-VariableFont_wght.ttf") format("truetype");
 }
 
-.image-button {
-    color: #070939;
+.evil-image-button {
+    color: white;
     position: relative;
     display: inline-block;
     width: 300px; /* Adjust as needed */
@@ -22,15 +22,16 @@
     margin: 25px;
   }
 
-  .selected {
-    background-image: url(../Images/ChoiceCircleSelected.png);
+  .evil-selected {
+    background-image: url(../Images/EvilCircleSelected.png);
   }
 
-  .not-selected {
-    background-image: url(../Images/ChoiceCircleUnselected.png);
+  .evil-not-selected {
+    background-image: url(../Images/EvilCircleUnselected.png);
   }
   
-  .button-text {
+  .evil-button-text {
+    color: white;
     font-family: "EBGaramond";
     position: absolute;
     top: 50%;
@@ -40,7 +41,7 @@
     width: 75%;
   }
 
-  .stagger {
+  .evil-stagger {
     /*Staggers the bubbles so they look more like they're floating*/
     margin-top: random(2px, 8px);
   }

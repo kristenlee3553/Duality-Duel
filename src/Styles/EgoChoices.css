@@ -7,6 +7,12 @@
 
 .scene-title-text {
   font: 30px "MedievalSharp";
+  color: #070939;
+}
+
+.evil-title-text {
+  font: 30px "MedievalSharp";
+  color: #be383a;
 }
 
 .image-overlay {
@@ -21,6 +27,7 @@
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
   width: 80%;
 }
+
 
 .center-choicediv {
   max-width: fit-content;
