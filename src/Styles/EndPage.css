@@ -1,6 +1,6 @@
 .success-background {
     background-image: url("../Images/SuccessBackground.png");
-
+    background-size: cover;
 }
 
 .almost-background {
@@ -12,4 +12,3 @@
     background-image: url("../Images/FailBackground.png");
     background-size: cover;
 }
-

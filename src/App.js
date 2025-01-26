@@ -14,7 +14,7 @@ function App() {
       <Route path='/credits' element={<Credits />} />
       <Route path='/play' element={<EgoChoices />} />
       <Route path='/battle' element={<EgoBattle />} />
-      <Route path='/end' element={<EndPage state={0}/>} />
+      <Route path='/end' element={<EndPage state={2}/>} />
     </Routes>
   );
 }
