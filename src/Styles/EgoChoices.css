@@ -21,6 +21,11 @@ body {
   left: 15%;
 }
 
+.black-title-text {
+    font: 48px "MedievalSharp";
+    color: white;
+}
+
 .evil-title-text {
   font: 30px "MedievalSharp";
   color: #be383a;

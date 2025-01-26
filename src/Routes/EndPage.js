@@ -2,7 +2,7 @@ import "../Styles/EndPage.css"
 import { useEffect } from "react";
 import { Link } from 'react-router-dom';
 
-// Win = 6, Meh, = 1-5, Lose = 0
+// Win = 0, Meh, = 1, Lose = 2
 function EndPage({ state }) {
 
     useEffect(() => {
@@ -10,16 +10,16 @@ function EndPage({ state }) {
         const body = document.body;
 
         // Apply styles based on the state
-        if (state === 6) {
+        if (state === 0) {
             body.style.backgroundImage = "url('/Images/SuccessBackground.png')"; // Success
             console.log("here")
-        } else if (state === 0) {
+        } else if (state === 2) {
             body.style.backgroundImage = "url('/Images/FailBackground.png')"; // Fail
         } else {
             body.style.backgroundImage = "url('/Images/AlmostBackground.png')"; // Almost
         }
 
-        body.style.backgroundSize = "cover"
+        body.style.backgroundSize = "100%";
 
         // Cleanup to reset the background color when the component is unmounted or state changes
         return () => {

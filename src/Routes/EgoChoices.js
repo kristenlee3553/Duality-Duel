@@ -1,6 +1,7 @@
 import SceneBackground from '../Images/SceneText.png';
 import HoodedFigure from '../Images/hooded.png';
 import EvilFigure from '../Images/evil.png'
+import BlackScreen from '../Images/CutSceneText.png'
 import "../Styles/EgoChoices.css";
 import "../Fonts/MedievalSharp-Regular.ttf";
 import { useState } from 'react';
@@ -50,15 +51,21 @@ function EgoChoices() {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    async function cutscene() {
+    async function cutScene1() {
+        await sleep(5000);
+        setSceneType("dream")
+        cutscene2()
+    }
+
+    async function cutscene2() {
         setCutsceneText('Oh, you thought you were just going on a journey, did you?');
-        await sleep(2000);
+        await sleep(3000);
         setCutsceneText('You can\'t run anymore.');
-        await sleep(2000);
+        await sleep(3000);
         setCutsceneText('You can\'t run from yourself.');
-        await sleep(2000);
+        await sleep(3000);
         setCutsceneText('I know who you are. But do you know who you are?');
-        await sleep(2000);
+        await sleep(3000);
         setSceneNum(0);
         setChoices(evilChoices[0]);
         setSceneType("battle");
@@ -71,8 +78,8 @@ function EgoChoices() {
             // Last scene and user clicks next
             if (sceneNum == 4) {
                 getAIResponse();
-                setSceneType("dream");
-                cutscene();
+                setSceneType("dark");
+                cutScene1();
             }
             // Next Scene
             else {
@@ -105,6 +112,16 @@ function EgoChoices() {
         setSelectedChoice(choiceNum); // Update the selected choice state
         handleClick()
     };
+
+    function GetEndState() {
+        if (evilCounter === 6) {
+            return 0
+        }
+        else if (evilCounter >= 3) {
+            return 1
+        }
+        return 2
+    }
     
     if (sceneType == "choices") {
         return (
@@ -146,6 +163,11 @@ function EgoChoices() {
                     />
                 </div>
             </div>
+        );
+    }
+    else if (sceneType == "dark") {
+        return (
+            <img src={BlackScreen} class="img-fluid" alt='Scene Text Background'></img>
         );
     }
     else if (sceneType == "dream") {
@@ -204,7 +226,7 @@ function EgoChoices() {
         return (
             <div>
                 <EndPage
-                    state={evilCounter}
+                    state={GetEndState()}
                 />
             </div>
         );
