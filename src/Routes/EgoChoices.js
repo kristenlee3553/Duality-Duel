@@ -7,6 +7,7 @@ import { handleGemeniAPICall } from '../AI/Gemeni';
 import ChoiceBubbleGroup from '../Components/ChoiceBubbleGroup';
 import ChoiceBubbleGroupEvil from '../Components/ChoiceBubbleGroupEvil';
 import { GetPersonaPrompt, GetShadowPrompt } from '../Data/GeminiPrompts';
+import EndPage from './EndPage';
 
 function EgoChoices() {
     const [sceneNum, setSceneNum] = useState(0);
@@ -14,6 +15,7 @@ function EgoChoices() {
     const [sceneType, setSceneType] = useState(["choices"]);
     const [choices, setChoices] = useState([]);
     const [shadowText, setShadowText] = useState([])
+    const [evilCounter, setEvilCounter] = useState(0);
 
     function GetChoicesText() {
         const choiceArray = []
@@ -58,9 +60,16 @@ function EgoChoices() {
             setSceneType("battle");
         }
         else if (sceneType == "battle") {
+            if (selectedChoice === 1) {
+                setEvilCounter(evilCounter + 1);
+            }
+            else if (selectedChoice === 2) {
+                setEvilCounter(evilCounter + 2);
+            }
+
             // Last scene and user clicks next
             if (sceneNum === 2) {
-                setSceneType("choices");
+                setSceneType("end");
             }
             // Next Scene
             else {
@@ -127,6 +136,15 @@ function EgoChoices() {
                 <div className='d-flex flex-row-reverse'>
                     <button className='buttonNext' onClick={() => handleClick()}>Next</button>
                 </div>
+            </div>
+        );
+    }
+    else if (sceneType == "end") {
+        return (
+            <div>
+                <EndPage
+                    state={evilCounter}
+                />
             </div>
         );
     }
