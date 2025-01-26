@@ -5,16 +5,15 @@ import { useState } from 'react';
 import { SceneData } from '../Data/SceneData';
 import { handleGemeniAPICall } from '../AI/Gemeni';
 import ChoiceBubbleGroup from '../Components/ChoiceBubbleGroup';
-import NextButton from "../Images/NextButton.png"
+import ChoiceBubbleGroupEvil from '../Components/ChoiceBubbleGroupEvil';
 import { GetPersonaPrompt, GetShadowPrompt } from '../Data/GeminiPrompts';
-import { Link } from 'react-router-dom';
 
 function EgoChoices() {
-
-    const [sceneNum, SetSceneNum] = useState(0);
+    const [sceneNum, setSceneNum] = useState(0);
     const [selectedChoice, setSelectedChoice] = useState(0);
-
-    const [choices, SetChoices] = useState([])
+    const [sceneType, setSceneType] = useState(["choices"]);
+    const [choices, setChoices] = useState([]);
+    const [shadowText, setShadowText] = useState([])
 
     function GetChoicesText() {
         const choiceArray = []
@@ -28,51 +27,109 @@ function EgoChoices() {
         return choiceArray
     }
 
-    // AI SHAODW RESPONSE HERE IT IS AN ARRAY
     async function getAIResponse() {
+        setShadowText(["I know who you are..."])
+
         const AIResponse = await handleGemeniAPICall(GetPersonaPrompt(GetChoicesText()));
-        const AIShadowResponse = await handleGemeniAPICall(GetShadowPrompt())
+        const AIShadowResponse = await handleGemeniAPICall(GetShadowPrompt());
+
+        let trimmed = AIShadowResponse.split('[').pop().split(']').shift();
+        let shadowTextArray = trimmed.match(/"([^"]+)"/g).map(item => item.replace(/"/g, ''));
+        setShadowText(shadowTextArray);
     }
 
-    // ADD CODE TO GO TO SHADOW
     const handleClick = () => {
+        if (sceneType == "choices") {
+            setChoices((choices) => [...choices, selectedChoice]);
 
-        // Add whatever user chose to choices
-        SetChoices((choices) => [...choices, selectedChoice]);
-
-        // Last scene and user clicks next
-        if (sceneNum === 4) {
-           getAIResponse()
+            // Last scene and user clicks next
+            if (sceneNum === 4) {
+                getAIResponse()
+                setSceneType("dream");
+            }
+            // Next Scene
+            else {
+                setSceneNum(sceneNum + 1);
+            }
         }
-
-        // Next Scene
-        else {
-            SetSceneNum(sceneNum + 1)
+        else if (sceneType == "dream") {
+            setSceneNum(0);
+            setChoices(["That's not true!", "I'm not sure...", "You're right."]);
+            setSceneType("battle");
+        }
+        else if (sceneType == "battle") {
+            // Last scene and user clicks next
+            if (sceneNum === 2) {
+                setSceneType("choices");
+            }
+            // Next Scene
+            else {
+                setSceneNum(sceneNum + 1);
+            }
         }
     };
 
     const handleChoiceSelected = (choiceNum) => {
         setSelectedChoice(choiceNum); // Update the selected choice state
-      };
+    };
     
-    return (
-        <div>
-            {/* Header Text*/}
+    if (sceneType == "choices") {
+        return (
             <div>
-                <div class="image-overlay">
-                    <img src={SceneBackground} class="img-fluid" alt='Scene Text Background'></img>
-                    <div class="overlay-text"> 
-                        <h1 class="scene-title-text">{SceneData[sceneNum].sceneTitle}</h1> 
-                    </div> 
+                {/* Header Text*/}
+                <div>
+                    <div class="image-overlay">
+                        <img src={SceneBackground} class="img-fluid" alt='Scene Text Background'></img>
+                        <div class="overlay-text"> 
+                            <h1 class="scene-title-text">{SceneData[sceneNum].sceneTitle}</h1> 
+                        </div> 
+                    </div>
+                </div>
+                {/* Choices Text*/}
+                <div class="center-choicediv">
+                    <ChoiceBubbleGroup sceneNum={sceneNum} onChoiceSelected={handleChoiceSelected}></ChoiceBubbleGroup>
+                </div>
+                {/* Next Button*/}
+                <div className='d-flex flex-row-reverse'>
+                    <button className='buttonNext' onClick={() => handleClick()}>Next</button>
                 </div>
             </div>
-        {/* Choices Text*/}
-        <div class="center-choicediv">
-            <ChoiceBubbleGroup sceneNum={sceneNum} onChoiceSelected={handleChoiceSelected}></ChoiceBubbleGroup>
-        </div>
-        <button className="buttonNext" onClick={() => handleClick()}>Next</button>
-        </div>
-    );
+        );
+    }
+    else if (sceneType == "dream") {
+        return (
+            <div>
+                cutscene here
+                {/* Next Button*/}
+                <div className='d-flex flex-row-reverse'>
+                    <button className='buttonNext' onClick={() => handleClick()}>Next</button>
+                </div>
+            </div>
+        );
+    }
+    else if (sceneType == "battle") {
+        return (
+            <div>
+                {/* Header Text*/}
+                <div>
+                    <div class="image-overlay">
+                        <img src={SceneBackground} class="img-fluid" alt='Scene Text Background'></img>
+                        <div class="overlay-text"> 
+                            <h1 class="evil-title-text">{shadowText[sceneNum]}</h1>
+                        </div> 
+                    </div>
+                </div>
+                {/* Choices Text*/}
+                <div class="center-choicediv">
+                    <ChoiceBubbleGroupEvil choices={choices} onChoiceSelected={handleChoiceSelected}></ChoiceBubbleGroupEvil>
+                </div>
+                {/* Next Button*/}
+                <div className='d-flex flex-row-reverse'>
+                    <button className='buttonNext' onClick={() => handleClick()}>Next</button>
+                </div>
+            </div>
+        );
+    }
 }
 
 export default EgoChoices;
