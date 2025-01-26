@@ -4,16 +4,18 @@ import "../Fonts/MedievalSharp-Regular.ttf"
 import { useState } from 'react';
 import { SceneData } from '../Data/SceneData';
 import { handleGemeniAPICall } from '../AI/Gemeni';
-import ChoiceBubbleGroup from '../Components/ChoiceBubbleGroup';
-import ChoiceBubbleGroupEvil from '../Components/ChoiceBubbleGroupEvil';
+import ChoiceBubble from '../Components/ChoiceBubble';
+import ChoiceBubbleEvil from '../Components/ChoiceBubbleEvil';
 import { GetPersonaPrompt, GetShadowPrompt } from '../Data/GeminiPrompts';
+import EndPage from './EndPage';
 
 function EgoChoices() {
     const [sceneNum, setSceneNum] = useState(0);
-    const [selectedChoice, setSelectedChoice] = useState(0);
+    const [selectedChoice, setSelectedChoice] = useState(10);
     const [sceneType, setSceneType] = useState(["choices"]);
     const [choices, setChoices] = useState([]);
     const [shadowText, setShadowText] = useState([])
+    const [evilCounter, setEvilCounter] = useState(0);
 
     function GetChoicesText() {
         const choiceArray = []
@@ -41,9 +43,9 @@ function EgoChoices() {
     const handleClick = () => {
         if (sceneType == "choices") {
             setChoices((choices) => [...choices, selectedChoice]);
-
+            setSelectedChoice(10)
             // Last scene and user clicks next
-            if (sceneNum === 4) {
+            if (sceneNum == 4) {
                 getAIResponse()
                 setSceneType("dream");
             }
@@ -58,9 +60,18 @@ function EgoChoices() {
             setSceneType("battle");
         }
         else if (sceneType == "battle") {
+            if (selectedChoice === 1) {
+                setEvilCounter(evilCounter + 1);
+            }
+            else if (selectedChoice === 2) {
+                setEvilCounter(evilCounter + 2);
+            }
+
+            setSelectedChoice(10)
+
             // Last scene and user clicks next
             if (sceneNum === 2) {
-                setSceneType("choices");
+                setSceneType("end");
             }
             // Next Scene
             else {
@@ -71,6 +82,7 @@ function EgoChoices() {
 
     const handleChoiceSelected = (choiceNum) => {
         setSelectedChoice(choiceNum); // Update the selected choice state
+        handleClick()
     };
     
     if (sceneType == "choices") {
@@ -86,12 +98,31 @@ function EgoChoices() {
                     </div>
                 </div>
                 {/* Choices Text*/}
-                <div class="center-choicediv">
-                    <ChoiceBubbleGroup sceneNum={sceneNum} onChoiceSelected={handleChoiceSelected}></ChoiceBubbleGroup>
-                </div>
-                {/* Next Button*/}
-                <div className='d-flex flex-row-reverse'>
-                    <button className='buttonNext' onClick={() => handleClick()}>Next</button>
+                <div className="d-flex flex-row mb-3 center-choicediv">
+                    <ChoiceBubble
+                        sceneNum={sceneNum}
+                        choiceNum= {0}
+                        isSelected={selectedChoice === 0} // Pass the selected state
+                        onSelect={handleChoiceSelected} // Pass the function to update selected state
+                    />
+                    <ChoiceBubble
+                        sceneNum={sceneNum}
+                        choiceNum= {1}
+                        isSelected={selectedChoice === 1} // Pass the selected state
+                        onSelect={handleChoiceSelected} // Pass the function to update selected state
+                    />
+                    <ChoiceBubble
+                        sceneNum={sceneNum}
+                        choiceNum= {2}
+                        isSelected={selectedChoice === 2} // Pass the selected state
+                        onSelect={handleChoiceSelected} // Pass the function to update selected state
+                    />
+                    <ChoiceBubble
+                        sceneNum={sceneNum}
+                        choiceNum= {3}
+                        isSelected={selectedChoice === 3} // Pass the selected state
+                        onSelect={handleChoiceSelected} // Pass the function to update selected state
+                    />
                 </div>
             </div>
         );
@@ -120,13 +151,35 @@ function EgoChoices() {
                     </div>
                 </div>
                 {/* Choices Text*/}
-                <div class="center-choicediv">
-                    <ChoiceBubbleGroupEvil choices={choices} onChoiceSelected={handleChoiceSelected}></ChoiceBubbleGroupEvil>
+                <div className="d-flex flex-row mb-3 center-choicediv">
+                    <ChoiceBubbleEvil
+                        choice={choices[0]}
+                        choiceNum= {0}
+                        isSelected={selectedChoice === 0} // Pass the selected state
+                        onSelect={handleChoiceSelected} // Pass the function to update selected state
+                    />
+                    <ChoiceBubbleEvil
+                        choice={choices[1]}
+                        choiceNum= {1}
+                        isSelected={selectedChoice === 1} // Pass the selected state
+                        onSelect={handleChoiceSelected} // Pass the function to update selected state
+                    />
+                    <ChoiceBubbleEvil
+                        choice={choices[2]}
+                        choiceNum= {2}
+                        isSelected={selectedChoice === 2} // Pass the selected state
+                        onSelect={handleChoiceSelected} // Pass the function to update selected state
+                    />
                 </div>
-                {/* Next Button*/}
-                <div className='d-flex flex-row-reverse'>
-                    <button className='buttonNext' onClick={() => handleClick()}>Next</button>
-                </div>
+            </div>
+        );
+    }
+    else if (sceneType == "end") {
+        return (
+            <div>
+                <EndPage
+                    state={evilCounter}
+                />
             </div>
         );
     }
