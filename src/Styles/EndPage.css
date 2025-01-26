@@ -1,14 +1,68 @@
-.success-background {
-    background-image: url("../Images/SuccessBackground.png");
-    background-size: cover;
+.end-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.almost-background {
-    background-image: url("../Images/AlmostBackground.png");
-    background-size: cover;
+.end-description {
+    text-align: center;
+    margin: 1rem;
+    margin-top: 8rem;
 }
 
-.fail-background {
-    background-image: url("../Images/FailBackground.png");
-    background-size: cover;
+.description-text {
+    font-family: "EBGaramond";
+    color: white;
+    font-size: 36px;
 }
+
+.red-text {
+    color: red;
+}
+
+.header-text {
+    font: 60px "MedievalSharp";
+    color: white;
+}
+
+.buttonPlayAgain {
+    position: absolute;
+    bottom: 36px; 
+    right: 48px;
+    border-radius: 24px;
+    background-color: #e7daf9;
+    border: 2px solid #070939;
+    padding: 12px 36px;
+    font-family: 'EB Garamond', serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #070939;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+  
+.buttonPlayAgain:hover {
+    background-color: #d6c3f2;
+    transform: scale(1.05);
+}
+
+.buttonExit {
+    position: absolute;
+    bottom: 36px; 
+    left: 48px;
+    border-radius: 24px;
+    background-color: #e7daf9;
+    border: 2px solid #070939;
+    padding: 12px 36px;
+    font-family: 'EB Garamond', serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #070939;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .buttonExit:hover {
+    background-color: #d6c3f2;
+    transform: scale(1.05);
+  }
