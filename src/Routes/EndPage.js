@@ -35,9 +35,7 @@ function EndPage({ state }) {
          } else {
             end_description = "You did not acknowledge your shadow. The shadow embodies the hidden parts of yourself—traits, emotions, or desires often suppressed or denied. By denying its existence, you risk projecting these qualities onto others, distorting your perceptions and relationships." 
          }
-         return () => {
-            end_description
-        };
+         return end_description
     }
     var description = GetDescription();
 
