@@ -1,7 +1,7 @@
 import "../Styles/EndPage.css"
 import { useEffect } from "react";
 
-// Win = 0, Meh, = 1, Lose = 2
+// Win = 6, Meh, = 1-5, Lose = 0
 function EndPage({ state }) {
 
     useEffect(() => {
@@ -9,13 +9,13 @@ function EndPage({ state }) {
         const body = document.body;
 
         // Apply styles based on the state
-        if (state === 0) {
+        if (state === 6) {
             body.style.backgroundImage = "url('/Images/SuccessBackground.png')"; // Success
             console.log("here")
-        } else if (state === 1) {
-            body.style.backgroundImage = "url('/Images/AlmostBackground.png')"; // Almost
-        } else {
+        } else if (state === 0) {
             body.style.backgroundImage = "url('/Images/FailBackground.png')"; // Fail
+        } else {
+            body.style.backgroundImage = "url('/Images/AlmostBackground.png')"; // Almost
         }
 
         body.style.backgroundSize = "cover"
