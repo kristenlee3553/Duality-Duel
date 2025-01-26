@@ -3,19 +3,20 @@ import "../Fonts/EBGaramond-VariableFont_wght.ttf"
 import "../Styles/ChoiceBubble.css"
 import { SceneData } from "../Data/SceneData"
 
-function ChoiceBubble({ sceneNum, choiceNum }) {
+function ChoiceBubble({ sceneNum, choiceNum, isSelected, onSelect }) {
     
-    const [selected, setSelected] = useState(false);
-    const selectedState = selected? "selected" : "not-selected";
+    const selectedStateStyle = isSelected ? 'selected' : 'not-selected';
+
+    const choiceKey = "choice" + choiceNum
 
     const handleClick = () => {
-        setSelected(!selected)
-    }
+        onSelect(choiceNum); // Notify parent about the selected choice
+    };
 
     return (
-        <div>
-            <button className={"btn image-button " + selectedState} type='button' onClick={() => handleClick()}>
-                <span className="button-text">{SceneData[sceneNum].choices[choiceNum]}</span>
+        <div className="stagger">
+            <button className={"btn image-button " + selectedStateStyle} type='button' onClick={() => handleClick()}>
+                <span className="button-text">{SceneData[sceneNum].choices[choiceKey]}</span>
             </button>
         </div>
     )

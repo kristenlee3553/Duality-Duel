@@ -1,0 +1,15 @@
+.success-background {
+    background-image: url("../Images/SuccessBackground.png");
+
+}
+
+.almost-background {
+    background-image: url("../Images/AlmostBackground.png");
+    background-size: cover;
+}
+
+.fail-background {
+    background-image: url("../Images/FailBackground.png");
+    background-size: cover;
+}
+
