@@ -13,28 +13,28 @@ function Credits() {
       
         <div className="container-person">
             <div className="person">
-                <img className="photo" src={Savannah}/>
+                <img className="photo savannah"/>
                 <div className="photo-text">
                     <div className="nameContainer">Savannah Han</div>
                     <div className="roleContainer">Design & Front-End</div>
                 </div>
             </div>
             <div className="person">
-                <img className="photo" src={Kristen}/>
+                <img className="photo kristen"/>
                 <div className="photo-text">
                     <div className="nameContainer">Kristen Lee</div>
                     <div className="roleContainer">Front-End & Back-End</div>
                 </div>
             </div>
             <div className="person">
-                <img className="photo" src={Amanda}/>
+                <img className="photo amanda"/>
                 <div className="photo-text">
                     <div className="nameContainer">Amanda Li</div>
                     <div className="roleContainer">Design & Front-End</div>
                 </div>
             </div>
             <div className="person">
-                <img className="photo" src={Cynthia}/>
+                <img className="photo cynthia"/>
                 <div className="photo-text">
                     <div className="nameContainer">Cynthia Wang</div>
                     <div className="roleContainer">AI & Front-End</div>
