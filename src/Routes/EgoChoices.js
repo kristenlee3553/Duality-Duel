@@ -67,6 +67,8 @@ function EgoChoices() {
                 setEvilCounter(evilCounter + 2);
             }
 
+            setSelectedChoice(10)
+
             // Last scene and user clicks next
             if (sceneNum === 2) {
                 setSceneType("end");
