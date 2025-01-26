@@ -6,24 +6,40 @@ import { Link } from 'react-router-dom';
 function EndPage({ state }) {
 
     useEffect(() => {
-        // Access the body element
-        const body = document.body;
+        // Function to update background size based on the window size
+        const updateBackgroundSize = () => {
+            const body = document.body;
+    
+            // Get the window width and height
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+    
+            // Apply styles based on the state
+            if (state === 0) {
+                body.style.backgroundImage = "url('/Images/SuccessBackground.png')"; // Success
+            } else if (state === 2) {
+                body.style.backgroundImage = "url('/Images/FailBackground.png')"; // Fail
+            } else {
+                body.style.backgroundImage = "url('/Images/AlmostBackground.png')"; // Almost
+            }
 
-        // Apply styles based on the state
-        if (state === 0) {
-            body.style.backgroundImage = "url('/Images/SuccessBackground.png')"; // Success
-            console.log("here")
-        } else if (state === 2) {
-            body.style.backgroundImage = "url('/Images/FailBackground.png')"; // Fail
-        } else {
-            body.style.backgroundImage = "url('/Images/AlmostBackground.png')"; // Almost
-        }
+            // Set the background size to fit the window size
+            body.style.backgroundSize = `${width}px ${height}px`;
 
-        body.style.backgroundSize = "100%";
+            // To avoid the background repeating
+            body.style.backgroundRepeat = "no-repeat";
+        };
 
-        // Cleanup to reset the background color when the component is unmounted or state changes
+        updateBackgroundSize();
+
+        // Add a resize event listener to adjust background size when the window is resized
+        window.addEventListener('resize', updateBackgroundSize);
+    
+        // Cleanup the event listener on component unmount
         return () => {
-            body.style.backgroundImage = ""; // Reset background color
+            window.removeEventListener('resize', updateBackgroundSize);
+            const body = document.body;
+            body.style.backgroundImage = ""; // Reset background image
         };
     }, [state]); // Re-run when the state changes
 

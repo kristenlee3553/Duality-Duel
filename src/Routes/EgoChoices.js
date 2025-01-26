@@ -1,7 +1,7 @@
 import SceneBackground from '../Images/SceneText.png';
 import HoodedFigure from '../Images/hooded.png';
-import EvilFigure from '../Images/evil.png'
-import BlackScreen from '../Images/CutSceneText.png'
+import EvilFigure from '../Images/evil.png';
+import BlackScreen from '../Images/CutSceneText.png';
 import "../Styles/EgoChoices.css";
 import "../Fonts/MedievalSharp-Regular.ttf";
 import { useState } from 'react';
@@ -69,6 +69,15 @@ function EgoChoices() {
         setSceneNum(0);
         setChoices(evilChoices[0]);
         setSceneType("battle");
+        
+        const body = document.body;
+    
+        // Get the window width and height
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        body.style.backgroundImage = "url('/Images/evilBackground.png')";
+        body.style.backgroundSize = `${width}px ${height}px`;
     }
 
     const handleClick = () => {
@@ -167,7 +176,7 @@ function EgoChoices() {
     }
     else if (sceneType == "dark") {
         return (
-            <img src={BlackScreen} class="img-fluid" alt='Scene Text Background'></img>
+            <img src={BlackScreen} class="black-screen" alt='Scene Text Background'></img>
         );
     }
     else if (sceneType == "dream") {
@@ -192,29 +201,29 @@ function EgoChoices() {
                 <div>
                     <div class="image-overlay">
                         <img src={SceneBackground} class="img-fluid" alt='Scene Text Background'></img>
-                        <img src={EvilFigure} class="img-evil" alt='Scene Text Background'></img>
+                        <img src={EvilFigure} class="img-evil" alt='Hooded Figure'></img>
                         <div class="overlay-text"> 
                             <h1 class="evil-title-text">{shadowText[sceneNum]}</h1>
-                        </div> 
+                        </div>
                     </div>
                 </div>
                 {/* Choices Text*/}
                 <div className="d-flex flex-row mb-3 center-choicediv">
                     <ChoiceBubbleEvil
                         choice={choices[0]}
-                        choiceNum= {0}
+                        choiceNum={0}
                         isSelected={selectedChoice === 0} // Pass the selected state
                         onSelect={handleChoiceSelected} // Pass the function to update selected state
                     />
                     <ChoiceBubbleEvil
                         choice={choices[1]}
-                        choiceNum= {1}
+                        choiceNum={1}
                         isSelected={selectedChoice === 1} // Pass the selected state
                         onSelect={handleChoiceSelected} // Pass the function to update selected state
                     />
                     <ChoiceBubbleEvil
                         choice={choices[2]}
-                        choiceNum= {2}
+                        choiceNum={2}
                         isSelected={selectedChoice === 2} // Pass the selected state
                         onSelect={handleChoiceSelected} // Pass the function to update selected state
                     />
