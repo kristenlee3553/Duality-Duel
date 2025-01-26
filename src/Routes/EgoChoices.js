@@ -11,7 +11,7 @@ import EndPage from './EndPage';
 
 function EgoChoices() {
     const [sceneNum, setSceneNum] = useState(0);
-    const [selectedChoice, setSelectedChoice] = useState(0);
+    const [selectedChoice, setSelectedChoice] = useState(10);
     const [sceneType, setSceneType] = useState(["choices"]);
     const [choices, setChoices] = useState([]);
     const [shadowText, setShadowText] = useState([])
@@ -98,7 +98,7 @@ function EgoChoices() {
                     </div>
                 </div>
                 {/* Choices Text*/}
-                <div className="d-flex flex-row mb-3">
+                <div className="d-flex flex-row mb-3 center-choicediv">
                     <ChoiceBubble
                         sceneNum={sceneNum}
                         choiceNum= {0}
