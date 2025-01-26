@@ -70,9 +70,7 @@ function EgoChoices() {
         <div class="center-choicediv">
             <ChoiceBubbleGroup sceneNum={sceneNum} onChoiceSelected={handleChoiceSelected}></ChoiceBubbleGroup>
         </div>
-            <Link to="/">
-                <button className="buttonNext">Next</button>
-            </Link>
+        <button className="buttonNext" onClick={() => handleClick()}>Next</button>
         </div>
     );
 }
