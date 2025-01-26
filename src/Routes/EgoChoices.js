@@ -23,7 +23,7 @@ function EgoChoices() {
 
     const evilChoices = 
     [["That's not true!", "I'm not sure...", "You're right."],
-    ["Stop Talking!", "Maybe you're right...", "I know."],
+    ["Stop talking!", "Maybe you're right...", "I know."],
     ["You're wrong!", "I don't know about that...", "I accept that part of me."]]
 
     function GetChoicesText() {
@@ -52,7 +52,7 @@ function EgoChoices() {
     }
 
     async function cutScene1() {
-        await sleep(5000);
+        await sleep(4000);
         setSceneType("dream")
         cutscene2()
     }
@@ -61,9 +61,9 @@ function EgoChoices() {
         setCutsceneText('Oh, you thought you were just going on a journey, did you?');
         await sleep(3000);
         setCutsceneText('You can\'t run anymore.');
-        await sleep(3000);
+        await sleep(2500);
         setCutsceneText('You can\'t run from yourself.');
-        await sleep(3000);
+        await sleep(2500);
         setCutsceneText('I know who you are. But do you know who you are?');
         await sleep(3000);
         setSceneNum(0);
@@ -80,9 +80,12 @@ function EgoChoices() {
         body.style.backgroundSize = `${width}px ${height}px`;
     }
 
-    const handleClick = () => {
+    const handleClick = async (choiceNum) => {
         if (sceneType == "choices") {
-            setChoices((choices) => [...choices, selectedChoice]);
+            console.log(choiceNum)
+            setChoices((choices) => [...choices, choiceNum]);
+            
+            await sleep(750)
             setSelectedChoice(10)
             // Last scene and user clicks next
             if (sceneNum == 4) {
@@ -96,12 +99,14 @@ function EgoChoices() {
             }
         }
         else if (sceneType == "battle") {
-            if (selectedChoice === 1) {
+            if (choiceNum === 1) {
                 setEvilCounter(evilCounter + 1);
             }
-            else if (selectedChoice === 2) {
+            else if (choiceNum === 2) {
                 setEvilCounter(evilCounter + 2);
             }
+
+            await sleep(500)
 
             setSelectedChoice(10)
 
@@ -118,8 +123,7 @@ function EgoChoices() {
     };
 
     const handleChoiceSelected = (choiceNum) => {
-        setSelectedChoice(choiceNum); // Update the selected choice state
-        handleClick()
+        handleClick(choiceNum)
     };
 
     function GetEndState() {
@@ -228,12 +232,16 @@ function EgoChoices() {
                         onSelect={handleChoiceSelected} // Pass the function to update selected state
                     />
                 </div>
+                <div>
+                    {evilCounter}
+                </div>
             </div>
         );
     }
     else if (sceneType == "end") {
         return (
             <div>
+                <h1>{evilCounter}</h1>
                 <EndPage
                     state={GetEndState()}
                 />
