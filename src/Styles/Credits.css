@@ -97,3 +97,43 @@ h1 {
     gap: 12px;
     position: relative;
 }
+
+.savannah {
+    background-image: url("/public/Images/Savannah.png");
+    background-size: cover;
+}
+
+.savannah:hover {
+    background-image: url("/public/Images/EvilSavannah.png");
+    background-size: cover;
+}
+
+.kristen {
+    background-image: url("/public/Images/Kristen.png");
+    background-size: cover;
+}
+
+.kristen:hover {
+    background-image: url("/public/Images/EvilKristen.png");
+    background-size: cover;
+}
+
+.amanda {
+    background-image: url("/public/Images/Amanda.png");
+    background-size: cover;
+}
+
+.amanda:hover {
+    background-image: url("/public/Images/EvilAmanda.png");
+    background-size: cover;
+}
+
+.cynthia {
+    background-image: url("/public/Images/Cynthia.png");
+    background-size: cover;
+}
+
+.cynthia:hover {
+    background-image: url("/public/Images/EvilCynthia.png");
+    background-size: cover;
+}
