@@ -4,6 +4,8 @@
     url("../Fonts/MedievalSharp-Regular.ttf") format("truetype");
 }
 
+body
+
 .scene-title-text {
   font: 36px "MedievalSharp";
 }
