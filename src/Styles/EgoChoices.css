@@ -15,9 +15,16 @@ body {
   color: #070939;
 }
 
+.dream-title-text {
+  font: 30px "MedievalSharp";
+  color: #070939;
+  left: 15%;
+}
+
 .evil-title-text {
   font: 30px "MedievalSharp";
   color: #be383a;
+  left: 15%;
 }
 
 .image-overlay {
@@ -59,4 +66,21 @@ body {
 .buttonNext:hover {
   background-color: #d6c3f2;
   transform: scale(1.05);
+}
+
+.img-figure {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 289px;
+  width: 200px;
+}
+
+.img-evil {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  transform: scaleY(-1);
+  height: 298px;
+  width: 200px;
 }
