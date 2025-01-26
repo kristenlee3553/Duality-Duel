@@ -85,7 +85,7 @@ function EgoChoices() {
             console.log(choiceNum)
             setChoices((choices) => [...choices, choiceNum]);
             
-            await sleep(750)
+            await sleep(500)
             setSelectedChoice(10)
             // Last scene and user clicks next
             if (sceneNum == 4) {
@@ -106,7 +106,7 @@ function EgoChoices() {
                 setEvilCounter(evilCounter + 2);
             }
 
-            await sleep(500)
+            await sleep(400)
 
             setSelectedChoice(10)
 
